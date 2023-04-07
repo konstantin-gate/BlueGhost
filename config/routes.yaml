@@ -1,0 +1,3 @@
+controllers:
+    resource: ../modules/
+    type: attribute

@@ -1,0 +1,37 @@
+{% extends '@base/base.html.twig' %}
+
+{% block title %}Jejda! Vyskytla se chyba{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        h1.error {
+            color: #dc3545;
+            font-size: 24px;
+        }
+
+        h2.error {
+            font-size: 18px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="error">Jejda! Vyskytla se chyba</h1>
+            <h2 class="error">V databázi nebyl nalezen žádný kontakt "{{ slug }}"</h2>
+            <p>
+                Něco je rozbité. Dejte nám prosím vědět, co jste dělali, když k této chybě došlo.<br>
+                Co nejdříve to napravíme. Omlouváme se za případné nepříjemnosti.
+            </p>
+            <p>
+                <a class="btn btn-secondary" href="{{ path_home }}">
+                    Zpět na hlavní stránku adresáře
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

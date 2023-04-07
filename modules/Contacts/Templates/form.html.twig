@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+
+{% if not form.vars.valid %}
+    {{ form_errors(form) }}
+{% endif %}
+
+<div class="row mb-2">
+    <div class="col">
+        <div class="form-outline">
+            {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.firstName, '', { 'label_attr': {'class': 'form-label'} }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-outline">
+            {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(form.lastName, '', { 'label_attr': {'class': 'form-label'} }) }}
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col form-outline mb-2">
+        {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.phone, '', { 'label_attr': {'class': 'form-label'} }) }}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col form-outline mb-2">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.email, '', { 'label_attr': {'class': 'form-label'} }) }}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col form-outline mb-2">
+        {{ form_widget(form.note, {'attr': {'class': 'form-control', 'rows': "4"}}) }}
+        {{ form_label(form.note, '', { 'label_attr': {'class': 'form-label'} }) }}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col">
+        {% if slug|default() %}
+            {# Úprava nebo smazání kontaktu #}
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-outline-secondary d-flex align-items-center" href="{{ path('contacts_home') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="293.639 414.445 8 13" xml:space="preserve"><g fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m294.837 420.945 5.605-5.605M300.442 426.55l-5.605-5.605"/></g></svg>
+                        <div class="ms-2">Na hlavní stránku adresáře</div>
+                    </a>
+                    <div class="ms-3">{{ form_row(form.submit, {'label':'Uložit opravené údaje', 'attr': {'class': 'btn btn-secondary btn-block'}}) }}</div>
+                </div>
+                <a class="btn btn-danger" href="{{ path('contact_delete', {slug: slug}) }}">Smazat kontakt</a>
+            </div>
+        {% else %}
+            {# Přidáni nového kontaktu #}
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-block'}}) }}
+        {% endif %}
+    </div>
+</div>
+{{ form_end(form) }}

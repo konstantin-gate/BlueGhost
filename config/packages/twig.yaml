@@ -1,0 +1,9 @@
+twig:
+    default_path: '%kernel.project_dir%/modules/templates'
+    paths:
+        "%kernel.project_dir%/modules/templates": base
+        "%kernel.project_dir%/modules/Contacts/templates": contacts
+
+when@test:
+    twig:
+        strict_variables: true
